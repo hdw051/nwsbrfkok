@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kaart bewerken – Kok Experience</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body { font-family: 'Ubuntu', Arial, sans-serif; }
+    .back-link { display:inline-block;margin-bottom:1rem;color:var(--brand-primary);text-decoration:none;font-weight:600; }
+  </style>
+</head>
+<body>
+  <main class="edit-container">
+    <a href="index.html" class="back-link">← Terug naar overzicht</a>
+    <div class="edit-header">
+      <h2 id="editTitle">Kaart bewerken</h2>
+    </div>
+    <div class="editor-toolbar">
+      <div class="toolbar-spacer"></div>
+      <button type="button" class="copy-button" id="resetButton">Reset velden</button>
+      <button type="button" class="copy-button" id="toggleCodeBtn">Toon/verberg HTML</button>
+    </div>
+    <form class="edit-form" id="editForm">
+      <!-- Dynamische formuliervelden komen hier -->
+    </form>
+    <aside class="side-panel">
+      <div class="preview-wrapper">
+        <h3>Voorbeeld</h3>
+        <div class="preview-area" id="previewArea"></div>
+      </div>
+      <div class="preview-wrapper" id="codeWrapper">
+        <h3>HTML-code</h3>
+        <div class="code-area"><pre id="codeArea"></pre></div>
+        <button type="button" class="copy-button" id="copyButton">Kopieer</button>
+      </div>
+    </aside>
+  </main>
+  <div class="toast" id="toast">Gekopieerd!</div>
+  <script src="cards.js"></script>
+  <script src="edit-script.js"></script>
+</body>
+</html>

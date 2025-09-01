@@ -1,0 +1,307 @@
+/*
+ * Gemeenschappelijke stijl voor de interactieve kaartenbibliotheek
+ *
+ * Dit bestand definieert de basisopmaak voor de index- en bewerkpagina's.
+ * Alle tekst gebruikt het Ubuntu‑lettertype. Kleuren zijn afgeleid van
+ * de huisstijl van Kok Experience: goud, beige, donker en wit. De pagina
+ * biedt een rustig en overzichtelijk ontwerp zonder storende strepen.
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700;800&display=swap');
+
+/* CSS variabelen voor het kleurenschema */
+:root {
+  --brand-primary: #b48a19; /* goudkleurig accent */
+  --brand-light: #f9f7f2; /* licht beige achtergrond */
+  --brand-medium: #f1ebda; /* iets donkerder beige */
+  --brand-dark: #2b2b2b; /* donkergrijze tekstkleur */
+  --brand-black: #0f0f0f; /* bijna zwart voor donkere achtergronden */
+  --brand-white: #ffffff;
+  --border-radius: 18px;
+  --shadow: 0 6px 18px rgba(0, 0, 0, 0.14);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Ubuntu', system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: var(--brand-light);
+  color: var(--brand-dark);
+  line-height: 1.5;
+}
+
+/* Navigatiebalk en filter */
+header {
+  background-color: var(--brand-primary);
+  color: var(--brand-white);
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+nav {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-top: 0.5rem;
+}
+
+nav button {
+  border: none;
+  background: var(--brand-medium);
+  color: var(--brand-dark);
+  padding: 0.4rem 0.8rem;
+  border-radius: var(--border-radius);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+nav button.active,
+nav button:hover {
+  background: var(--brand-primary);
+  color: var(--brand-white);
+}
+
+/* Container voor kaarten */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+  padding: 1.5rem;
+}
+
+/* Groepering van kaarten per categorie op de indexpagina */
+.category-group {
+  margin-bottom: 2rem;
+}
+
+/* Titel boven een categorie */
+.category-title {
+  margin: 0 0 0.5rem 0.5rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--brand-dark);
+}
+
+/* Grid binnen een categorie */
+.cards-group-grid {
+  /* Masonry-achtige kolommen voor compact overzicht met weinig lege ruimte */
+  column-width: 500px;
+  column-gap: 1rem;
+}
+
+.card-preview {
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  /* Altijd 500px breed in kolom, met compacte verticale ruimte */
+  width: 500px;
+  max-width: 500px;
+  display: inline-block;
+  margin: 0 0 1rem 0;
+  break-inside: avoid;
+  -webkit-column-break-inside: avoid;
+  /* Voorvertoningen op overzicht maximaal 1000px hoog */
+  max-height: 1000px;
+}
+
+.card-preview:hover {
+  transform: translateY(-4px);
+}
+
+.card-preview .card-name {
+  padding: 0.75rem;
+  font-weight: 700;
+  background: var(--brand-medium);
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--brand-dark);
+}
+
+.card-preview .card-content {
+  padding: 0;
+  max-height: 1000px;
+  overflow: hidden;
+}
+
+/* Zorg dat media in de preview niet buiten de kaart valt */
+.card-preview .card-content img,
+.card-preview .card-content svg,
+.card-preview .card-content video,
+.card-preview .card-content canvas {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Maak iconen in links horizontaal uitlijnbaar op de overzichtspagina */
+.card-preview .card-content a { display: inline-block; vertical-align: middle; }
+.card-preview .card-content a img { display: inline-block; }
+
+/* Stijl voor de bewerkpagina */
+.edit-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.5rem 1rem 3rem;
+}
+
+.edit-header {
+  margin-bottom: 1.5rem;
+}
+
+.edit-header h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.edit-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.edit-form .form-field {
+  display: flex;
+  flex-direction: column;
+}
+
+.field-hint {
+  margin-top: 4px;
+  color: #6b6b6b;
+  font-size: 0.8rem;
+}
+
+.edit-form label {
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+  color: var(--brand-dark);
+}
+
+.edit-form input,
+.edit-form textarea,
+.edit-form select {
+  padding: 0.5rem;
+  border: 1px solid var(--brand-medium);
+  border-radius: var(--border-radius);
+  font-family: inherit;
+  font-size: 0.9rem;
+  background: var(--brand-white);
+  color: var(--brand-dark);
+  resize: vertical;
+}
+
+.edit-form textarea {
+  min-height: 80px;
+}
+
+.preview-wrapper {
+  margin-top: 1rem;
+}
+
+.preview-wrapper h3 {
+  margin-bottom: 0.5rem;
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+.preview-area {
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  overflow-x: auto;
+  /* Beperk de breedte van de preview tot ongeveer de helft van de huidige
+   * standaardbreedte. Aanpassing: 500px vaste breedte voor voorbeeld. */
+  width: 500px;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Editor toolbar */
+.editor-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 0.5rem 0 1rem;
+}
+.toolbar-spacer { flex: 1; }
+.field-search {
+  flex: 1 1 340px;
+  min-width: 220px;
+  padding: 0.6rem 0.8rem;
+  border: 1px solid var(--brand-medium);
+  border-radius: var(--border-radius);
+  font-size: 0.95rem;
+}
+
+/* Side panel met sticky preview/code */
+.side-panel {
+  position: sticky;
+  top: 8px;
+}
+
+.code-area {
+  margin-top: 2rem;
+  padding: 1rem;
+  border: 1px solid var(--brand-medium);
+  border-radius: var(--border-radius);
+  background: var(--brand-black);
+  color: var(--brand-white);
+  font-family: monospace;
+  font-size: 0.75rem;
+  overflow-x: auto;
+}
+
+.copy-button {
+  margin-top: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: var(--brand-primary);
+  color: var(--brand-white);
+  border: none;
+  border-radius: var(--border-radius);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.copy-button:hover {
+  /* Donkerder tint voor hover; handmatig gekozen omdat CSS geen darken-functie kent */
+  background: #9d6f15;
+}
+
+/* Toast meldingen */
+.toast {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  background: var(--brand-primary);
+  color: var(--brand-white);
+  padding: 0.75rem 1rem;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.3s, transform 0.3s;
+  pointer-events: none;
+  z-index: 1000;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateY(0);
+}

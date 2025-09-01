@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kaartenbibliotheek – Kok Experience</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Inline CSS voor fallback lettertype totdat stylesheet geladen is */
+    body { font-family: 'Ubuntu', Arial, sans-serif; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Kaartenbibliotheek</h1>
+    <nav id="filterNav">
+      <!-- Dynamisch ingevulde filterknoppen -->
+    </nav>
+  </header>
+  <main>
+    <!-- Container voor alle kaartgroepen; geen gridklasse zodat groepen verticaal onder elkaar worden geplaatst -->
+    <div id="cardsGrid"></div>
+  </main>
+  <div class="toast" id="toast">Gekopieerd!</div>
+  <script src="cards.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
